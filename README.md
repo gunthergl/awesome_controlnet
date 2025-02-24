@@ -1,4 +1,4 @@
-[![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/)
+<!-- [![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/) -->
 <!-- These are examples of badges you might also want to add to your README. Update the URLs accordingly.
 [![Built Status](https://api.cirrus-ci.com/github/<USER>/cc_pipeline.svg?branch=main)](https://cirrus-ci.com/github/<USER>/cc_pipeline)
 [![ReadTheDocs](https://readthedocs.org/projects/cc_pipeline/badge/?version=latest)](https://cc_pipeline.readthedocs.io/en/stable/)
@@ -11,25 +11,17 @@
 
 # cc_pipeline
 
-> Add a short description here!
-
-A longer description of your project goes here...
+> This pipeline packages ControlNet in a fastAPI usecase.
 
 ## Installation
 
 In order to set up the necessary environment:
 
-1. review and uncomment what you need in `environment.yml` and create an environment `cc_pipeline` with the help of [conda]:
-   ```
-   conda env create -f environment.yml
-   ```
-2. activate the new environment with:
-   ```
-   conda activate cc_pipeline
-   ```
+```
+conda env create -f environment.yml
+conda activate cc_pipeline
+```
 
-> **_NOTE:_**  The conda environment will have cc_pipeline installed in editable mode.
-> Some changes, e.g. in `setup.cfg`, might require you to run `pip install -e .` again.
 
 
 Optional and needed only once after `git clone`:
