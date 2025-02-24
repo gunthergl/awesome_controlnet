@@ -22,6 +22,13 @@
    2. Install the environment
    3. Use "tox" to install the package and run the tests
 4. Create a pull-request to the main branch, you cannot push directly to the main branch.
+5. Container building and testing:
+   1. Build the current package with `tox -e build`
+   2. Build the "environment" container with `docker build -t cc_controlnet_cuda -f Dockerfile_environment .`
+   3. Build the "fastapi" container with `docker build -f Dockerfile_fastapi -t cc_controlnet_fastapi .`
+   4. Run the "fastapi" container with `docker run -p 5001:5001 -it --runtime=nvidia --gpus all cc_controlnet_fastapi`
+   5. Wait. Startup takes a while. (Here around 1min)
+   6. Test the fastapi container with `curl -X 'POST' 'http://localhost:5001/generate' --output output_image.png`
 
 ## Installation
 
@@ -131,4 +138,9 @@ git add --all
 git commit -m "Add controlnet with annotator" --no-verify
 
 # Add the previously generated awesomedemo_fastapi.py and main.py
+
+
+## Download the ControlNet canny model for testing
+curl -L https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_canny.pth -o models/control_sd15_canny.pth
+
 ```
