@@ -111,3 +111,33 @@ This project has been set up using [PyScaffold] 4.6 and the [dsproject extension
 [Google style]: http://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings
 [PyScaffold]: https://pyscaffold.org/
 [dsproject extension]: https://github.com/pyscaffold/pyscaffoldext-dsproject
+
+
+## How was the package set up?
+
+```bash
+# Install PyScaffold
+pip install pyscaffold
+pip install pyscaffoldext-dsproject
+
+# Create a new project
+putup --dsproject cc_pipeline --description "This pipeline packages ControlNet in a fastAPI usecase."
+
+```
+
+Copy the relevant packages into environment.yml.
+
+```bash
+
+conda env create -f environment.yml
+conda activate cc_pipeline
+
+# Set up precommit
+pre-commit install
+### Autoupdate introduced problems with python version, isort and black, so I leave that here for now.
+# # [WARNING] The 'rev' field of repo 'https://github.com/psf/black' appears to be a mutable reference (moving tag / branch).  Mutable references are never updated after first install and are not supported.  See https://pre-commit.com/#using-the-latest-version-for-a-repository for more details.  Hint: `pre-commit autoupdate` often fixes this.
+# pre-commit autoupdate
+
+### Check .pre-commit-config.yaml, then commit
+# Package 'isort' requires a different Python: 3.8.13 not in '>=3.9.0' --> For this here remove it
+```
