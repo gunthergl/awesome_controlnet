@@ -15,19 +15,25 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 from einops import rearrange, repeat
-from ldm.models.autoencoder import AutoencoderKL, IdentityFirstStage
-from ldm.models.diffusion.ddim import DDIMSampler
-from ldm.modules.diffusionmodules.util import (
+from omegaconf import ListConfig
+from pytorch_lightning.utilities.distributed import rank_zero_only
+from torch.optim.lr_scheduler import LambdaLR
+from torchvision.utils import make_grid
+from tqdm import tqdm
+
+from cc_pipeline.ldm.models.autoencoder import AutoencoderKL, IdentityFirstStage
+from cc_pipeline.ldm.models.diffusion.ddim import DDIMSampler
+from cc_pipeline.ldm.modules.diffusionmodules.util import (
     extract_into_tensor,
     make_beta_schedule,
     noise_like,
 )
-from ldm.modules.distributions.distributions import (
+from cc_pipeline.ldm.modules.distributions.distributions import (
     DiagonalGaussianDistribution,
     normal_kl,
 )
-from ldm.modules.ema import LitEma
-from ldm.util import (
+from cc_pipeline.ldm.modules.ema import LitEma
+from cc_pipeline.ldm.util import (
     count_params,
     default,
     exists,
@@ -37,11 +43,6 @@ from ldm.util import (
     log_txt_as_img,
     mean_flat,
 )
-from omegaconf import ListConfig
-from pytorch_lightning.utilities.distributed import rank_zero_only
-from torch.optim.lr_scheduler import LambdaLR
-from torchvision.utils import make_grid
-from tqdm import tqdm
 
 __conditioning_keys__ = {"concat": "c_concat", "crossattn": "c_crossattn", "adm": "y"}
 

@@ -5,8 +5,9 @@ from typing import Any, Optional
 import torch
 import torch.nn.functional as F
 from einops import rearrange, repeat
-from ldm.modules.diffusionmodules.util import checkpoint
 from torch import einsum, nn
+
+from cc_pipeline.ldm.modules.diffusionmodules.util import checkpoint
 
 try:
     import xformers

@@ -3,24 +3,25 @@ import torch
 import torch as th
 import torch.nn as nn
 from einops import rearrange, repeat
-from ldm.models.diffusion.ddim import DDIMSampler
-from ldm.models.diffusion.ddpm import LatentDiffusion
-from ldm.modules.attention import SpatialTransformer
-from ldm.modules.diffusionmodules.openaimodel import (
+from torchvision.utils import make_grid
+
+from cc_pipeline.ldm.models.diffusion.ddim import DDIMSampler
+from cc_pipeline.ldm.models.diffusion.ddpm import LatentDiffusion
+from cc_pipeline.ldm.modules.attention import SpatialTransformer
+from cc_pipeline.ldm.modules.diffusionmodules.openaimodel import (
     AttentionBlock,
     Downsample,
     ResBlock,
     TimestepEmbedSequential,
     UNetModel,
 )
-from ldm.modules.diffusionmodules.util import (
+from cc_pipeline.ldm.modules.diffusionmodules.util import (
     conv_nd,
     linear,
     timestep_embedding,
     zero_module,
 )
-from ldm.util import exists, instantiate_from_config, log_txt_as_img
-from torchvision.utils import make_grid
+from cc_pipeline.ldm.util import exists, instantiate_from_config, log_txt_as_img
 
 
 class ControlledUnetModel(UNetModel):

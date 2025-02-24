@@ -5,8 +5,9 @@ import numpy as np
 import torch as th
 import torch.nn as nn
 import torch.nn.functional as F
-from ldm.modules.attention import SpatialTransformer
-from ldm.modules.diffusionmodules.util import (
+
+from cc_pipeline.ldm.modules.attention import SpatialTransformer
+from cc_pipeline.ldm.modules.diffusionmodules.util import (
     avg_pool_nd,
     checkpoint,
     conv_nd,
@@ -15,7 +16,7 @@ from ldm.modules.diffusionmodules.util import (
     timestep_embedding,
     zero_module,
 )
-from ldm.util import exists
+from cc_pipeline.ldm.util import exists
 
 
 # dummy replace
