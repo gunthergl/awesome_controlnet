@@ -1,7 +1,6 @@
 # %%
 import random  # RNG
 
-import config  # Configuration settings (e.g., for memory saving)
 import cv2  # OpenCV for image processing operations
 import einops  # Tensor manipulation
 import numpy as np  # Numerical operations on arrays
@@ -10,6 +9,7 @@ from pytorch_lightning import (  # Set seeds for reproducibility in the whole tr
     seed_everything,
 )
 
+import cc_pipeline.config  # Configuration settings (e.g., for memory saving)
 from cc_pipeline.annotator.util import (  # Utility functions for image processing
     HWC3,
     resize_image,

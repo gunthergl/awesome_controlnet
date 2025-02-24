@@ -106,7 +106,7 @@ def setup_model_sampler():
     global model, ddim_sampler
 
     # Load the model configuration and initialize it on the CPU
-    model = create_model("./models/cldm_v15.yaml").cpu()
+    model = create_model("./src/cc_pipeline/models/cldm_v15.yaml").cpu()
 
     # Load pre-trained weights
     model.load_state_dict(load_state_dict("./models/control_sd15_canny.pth"))
@@ -148,7 +148,7 @@ async def generate_image(request: ImageRequest = None):
 
     try:
         # Load input image for processing
-        current_input = imageio.imread("test_imgs/mri_brain.jpg")
+        current_input = imageio.imread("data/external/mri_brain.jpg")
 
         # Process the input image using the model and DDIM sampler
         result = process(
