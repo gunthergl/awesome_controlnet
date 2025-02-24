@@ -125,7 +125,7 @@ rm -rf ControlNet
 mv ControlNet/* .
 rm tutorial*
 rm gradio*
-rm -r annotator font github_page docs test_imgs
+rm -r font github_page docs test_imgs
 rm tool_*
 git add --all
 git commit -m "Add controlnet" --no-verify
