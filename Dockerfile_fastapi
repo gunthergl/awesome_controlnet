@@ -1,0 +1,12 @@
+FROM cc_controlnet_cuda
+
+COPY scripts/main.py /home/awesomeuser/cc_pipeline/main.py
+EXPOSE 5001
+# CMD ["conda", "run", "-n", "cc_pipeline", "/bin/bash", "-c", "python main.py"]
+CMD ["conda", "run", "-n", "cc_pipeline", "/bin/bash", "-c", "uvicorn main:app --host 0.0.0.0 --port 5001 --reload"]
+
+
+
+# docker build -f Dockerfile_fastapi -t cc_controlnet_fastapi .
+# docker run -p 5001:5001 -it --runtime=nvidia --gpus all cc_controlnet_fastapi
+# docker run -p 5001:5001 -it --runtime=nvidia --gpus all cc_controlnet_fastapi /bin/bash
