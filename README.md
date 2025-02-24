@@ -13,6 +13,16 @@
 
 > This pipeline packages ControlNet in a fastAPI usecase.
 
+# HowTo develop
+
+1. Clone the repository
+2. Create a new branch
+3. Develop
+   1. Install pre-commit (and use it)
+   2. Install the environment
+   3. Use "tox" to install the package and run the tests
+4. Create a pull-request to the main branch, you cannot push directly to the main branch.
+
 ## Installation
 
 In order to set up the necessary environment:
@@ -101,4 +111,12 @@ pre-commit install
 ### Check .pre-commit-config.yaml, then commit
 
 ### Remove irrelevant folders and files
+```
+
+
+Get ControlNet
+
+
+```bash
+cd
 ```
