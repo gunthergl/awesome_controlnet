@@ -23,41 +23,8 @@ conda activate cc_pipeline
 ```
 
 
-
-Optional and needed only once after `git clone`:
-
-3. install several [pre-commit] git hooks with:
-   ```bash
-   pre-commit install
-   # You might also want to run `pre-commit autoupdate`
-   ```
-   and checkout the configuration under `.pre-commit-config.yaml`.
-   The `-n, --no-verify` flag of `git commit` can be used to deactivate pre-commit hooks temporarily.
-
-4. install [nbstripout] git hooks to remove the output cells of committed notebooks with:
-   ```bash
-   nbstripout --install --attributes notebooks/.gitattributes
-   ```
-   This is useful to avoid large diffs due to plots in your notebooks.
-   A simple `nbstripout --uninstall` will revert these changes.
-
-
 Then take a look into the `scripts` and `notebooks` folders.
 
-## Dependency Management & Reproducibility
-
-1. Always keep your abstract (unpinned) dependencies updated in `environment.yml` and eventually
-   in `setup.cfg` if you want to ship and install your package via `pip` later on.
-2. Create concrete dependencies as `environment.lock.yml` for the exact reproduction of your
-   environment with:
-   ```bash
-   conda env export -n cc_pipeline -f environment.lock.yml
-   ```
-   For multi-OS development, consider using `--no-builds` during the export.
-3. Update your current environment with respect to a new `environment.lock.yml` using:
-   ```bash
-   conda env update -f environment.lock.yml --prune
-   ```
 ## Project Organization
 
 ```
@@ -77,19 +44,12 @@ Then take a look into the `scripts` and `notebooks` folders.
 ├── environment.yml         <- The conda environment file for reproducibility.
 ├── models                  <- Trained and serialized models, model predictions,
 │                              or model summaries.
-├── notebooks               <- Jupyter notebooks. Naming convention is a number (for
-│                              ordering), the creator's initials and a description,
-│                              e.g. `1.0-fw-initial-data-exploration`.
 ├── pyproject.toml          <- Build configuration. Don't change! Use `pip install -e .`
 │                              to install for development or to build `tox -e build`.
 ├── references              <- Data dictionaries, manuals, and all other materials.
-├── reports                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures             <- Generated plots and figures for reports.
 ├── scripts                 <- Analysis and production scripts which import the
 │                              actual PYTHON_PKG, e.g. train_model.
 ├── setup.cfg               <- Declarative configuration of your project.
-├── setup.py                <- [DEPRECATED] Use `python setup.py develop` to install for
-│                              development or `python setup.py bdist_wheel` to build.
 ├── src
 │   └── cc_pipeline         <- Actual Python package where the main functionality goes.
 ├── tests                   <- Unit tests which can be run with `pytest`.
@@ -139,5 +99,6 @@ pre-commit install
 # pre-commit autoupdate
 
 ### Check .pre-commit-config.yaml, then commit
-# Package 'isort' requires a different Python: 3.8.13 not in '>=3.9.0' --> For this here remove it
+
+### Remove irrelevant folders and files
 ```
