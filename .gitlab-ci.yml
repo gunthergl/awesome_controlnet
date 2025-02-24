@@ -1,0 +1,25 @@
+
+stages:
+  - Build containers
+
+########### Build containers ##########
+container_building_environment:
+  needs: []
+  tags:
+    - container_builder
+  stage: Build containers
+  script:
+    - tox -e build
+    # Mind the "." at the end of docker build, it marks the context the image is built inside
+    - docker build --no-cache -t OUR_CUSTOM_REGISTRY/cc_controlnet_cuda:latest  --file Dockerfile_environment .
+    - docker push OUR_CUSTOM_REGISTRY/cc_controlnet_cuda:latest
+
+container_building_fastapi:
+  needs: [container_building_environment]
+  tags:
+    - container_builder
+  stage: Build containers
+  script:
+    # Mind the "." at the end of docker build, it marks the context the image is built inside
+    - docker build --no-cache -t OUR_CUSTOM_REGISTRY/cc_controlnet_fastapi:latest  --file Dockerfile_fastapi .
+    - docker push OUR_CUSTOM_REGISTRY/cc_controlnet_fastapi:latest
