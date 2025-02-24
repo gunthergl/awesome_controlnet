@@ -118,5 +118,13 @@ Get ControlNet
 
 
 ```bash
-cd
+cd src/cc_pipeline
+git clone https://github.com/lllyasviel/ControlNet.git
+# remove irrelevant files
+rm -rf ControlNet
+mv ControlNet/* .
+rm tutorial*
+rm gradio*
+rm -r annotator font github_page docs test_imgs
+rm tool_*
 ```
