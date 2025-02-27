@@ -13,6 +13,17 @@
 
 > This pipeline packages ControlNet in a fastAPI usecase.
 
+Quickstart:
+
+```bash
+git clone git@github.com:gunthergl/awesome_controlnet.git
+cd awesome_controlnet
+tox -e build
+docker build --no-cache -t cc_controlnet_cuda:latest  --file Dockerfile_environment .
+docker build --no-cache -t cc_controlnet_fastapi:latest  --file Dockerfile_fastapi .
+docker run -p 5001:5001 -it --runtime=nvidia --gpus all cc_controlnet_fastapi
+```
+
 # HowTo develop
 
 1. Clone the repository
